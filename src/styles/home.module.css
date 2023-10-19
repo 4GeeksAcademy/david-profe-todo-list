@@ -1,0 +1,22 @@
+.total {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgrey;
+    height: 100vh;
+}
+
+.cadaTarea {
+    border-radius: 0;
+    text-align: center;
+}
+
+.laLista {
+    border-radius: 0;
+    min-width: 70vh;
+}
+
+.textoDiferente {
+    text-align: left;
+    font-size: small;
+}

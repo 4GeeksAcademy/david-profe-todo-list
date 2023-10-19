@@ -1,24 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+import style from '../../styles/home.module.css'
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
 
 //create your first component
 const Home = () => {
+
+	const [todo, setTodo] = useState("")
+	const [list, setList] = useState([])
+
+	const modifToDo = (e) => {
+		setTodo(e.target.value)
+	}
+
+	const addToList = (e) => {
+		if (e.key === "Enter" && todo !== "") {
+			setList([...list, todo])
+			console.log("La lista actualmente tiene: ", list)
+			setTodo("")
+		}
+	}
+
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className={`text-center total ${style.total}`}>
+			<div>
+				<ul className={`list-group ${style.laLista}`}>
+				<input className={`list-group-item ${style.cadaTarea}`} value={todo} onChange={(e) => modifToDo(e)} onKeyDown={(e)=>addToList(e)}/>
+				{	
+					list.length > 0 ? (
+						<>
+							{list.map((ele,indx) =>(
+							<li key={indx} className={`list-group-item ${style.cadaTarea}`}>{ele}</li>
+							))}
+							<li className={`list-group-item ${style.textoDiferente}`}>{`Tienes ${list.length} tareas por hacer.`}</li>
+							
+						</>
+					):(
+						<li className={`list-group-item ${style.textoDiferente}`}>Nada para hacer! hora de netflix</li>
+					)
+				}
+				</ul>
+			</div>
 		</div>
 	);
 };
