@@ -6,10 +6,20 @@
     height: 100vh;
 }
 
-.cadaTarea {
+.inputTarea {
     border-radius: 0;
     text-align: center;
+
 }
+
+.cadaTarea {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+}
+
+
 
 .laLista {
     border-radius: 0;
@@ -18,5 +28,11 @@
 
 .textoDiferente {
     text-align: left;
+    font-size: small;
+}
+
+.deleteButton {
+    background-color: white;
+    border: 0;
     font-size: small;
 }
